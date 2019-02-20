@@ -8,9 +8,5 @@ export default class Client {
         })
     }
     
-    getProfile = () => {
-        this.http.get('/player')
-            .then(({data}) => console.log(data))
-            .catch(err => console.log(err))
-    }
+    getProfile = () => this.http.get('/player')
 }

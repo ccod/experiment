@@ -1,8 +1,7 @@
 import React from 'react'
 import { Layout, Button } from 'antd'
 import { Consumer } from 'utils/store'
-
-import Client from 'utils/client'
+import ProfileLabel from 'modules/auth/containers/ProfileLabel'
 
 const {
     Header, Footer, Content,
@@ -14,22 +13,12 @@ const Demo = props => (
     </Consumer>
 )
 
-class ProfileButton extends React.Component {
-    constructor (props) {
-        super(props)
-        this.client = new Client()
-    }
-
-    render() {
-        return <Button onClick={this.client.getProfile}>ProfileButton</Button>
-    }
-}
-
 export default () => (
     <Layout>
-        <Header>Header</Header>
+        <Header>
+            <ProfileLabel />
+        </Header>
         <Content>
-            <ProfileButton />
             <Demo />
         </Content>
         <Footer>Footer</Footer>

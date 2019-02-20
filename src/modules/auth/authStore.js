@@ -3,23 +3,26 @@ import { observable, computed, action, decorate } from 'mobx'
 
 // remember to use hooks like useContext(Consumer) 
 class AuthStore {
-    token = localStorage.getItem('jwtToken')
-    login = process.env.REACT_APP_LOGIN_URL
+    token = null
+    login = ""
+
+    constructor () {
+        this.token = localStorage.getItem('jwtToken')
+        this.login = process.env.REACT_APP_LOGIN_URL
+    }
 
     setSession = () => {
-        let token = window.location.hash.substr(1)
+        let tokenHash = window.location.hash.substr(1)
 
-        if (token === "") {
+        if (tokenHash === "") {
             history.replaceState('/')
             return
         }
 
-        localStorage.setItem('jwtToken', token)
-        this.token = token
+        localStorage.setItem('jwtToken', tokenHash)
+        this.token = tokenHash
         history.replaceState('/dashboard')
     }
-
-    isAuthenticated = () => !!this.token
 
     logout = () => {
         this.token = null
@@ -32,6 +35,5 @@ export default decorate(AuthStore, {
     token: observable,
     login: observable,
     setSession: action,
-    isAuthenticated: computed,
     logout: action
 })
