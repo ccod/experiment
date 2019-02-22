@@ -9,4 +9,5 @@ export default class Client {
     }
     
     getProfile = () => this.http.get('/player')
+    getPlayers = () => this.http.get('/players')
 }

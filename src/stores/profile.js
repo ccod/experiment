@@ -12,15 +12,16 @@ const fetchProfile = dispatch => () => {
 }
 
 const defaultState = {loading: false, value: null, error: null}
-const reducer = (state = defaultState, action) => {
-    switch(action.type) {
+const reducer = (state = defaultState, { type, payload }) => {
+    switch(type) {
         case profileR.type:
-            return Object.assign({}, state, {loading: true})
+            return Object.assign({}, state, {loading: true, error: null})
         case profileS.type:
-            return Object.assign({}, state, {loading: false, value: action.payload, error: null})
+            console.log('State: ', state)
+            return Object.assign({}, state, {loading: false, value: payload, error: null})
         case profileE.type:
-            return Object.assign({}, state, {loading: false, value: action.payload, error: true})
-        default: return defaultState
+            return Object.assign({}, state, {loading: false, value: payload, error: true})
+        default: return state 
     }
 }
 

@@ -1,0 +1,9 @@
+.header-profile > h3 {
+    display: inline-block;
+    color: white;
+    margin-left: 1em;
+}
+
+.header-menu {
+    width: 12em;
+}

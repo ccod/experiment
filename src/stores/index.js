@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 import { reducer as profile} from './profile'
+import { reducer as player } from './player'
 
-console.log('reducer: ', profile)
-export default combineReducers({ profile })
+export default combineReducers({ profile, player })
