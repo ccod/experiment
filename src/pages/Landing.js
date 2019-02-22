@@ -1,25 +1,19 @@
 import React from 'react'
-import { Layout, Button } from 'antd'
-import { Consumer } from 'utils/store'
-import ProfileLabel from 'modules/auth/containers/ProfileLabel'
+import { Layout } from 'antd'
+import Profile from 'containers/Profile'
 
 const {
     Header, Footer, Content,
 } = Layout
 
-const Demo = props => (
-    <Consumer>
-        {context => <Button onClick={context.tap}>DemoButton</Button>}
-    </Consumer>
-)
-
 export default () => (
     <Layout>
         <Header>
-            <ProfileLabel />
+            Header
         </Header>
         <Content>
-            <Demo />
+            Content
+            <Profile />
         </Content>
         <Footer>Footer</Footer>
     </Layout>

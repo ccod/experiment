@@ -1,9 +1,20 @@
 import React from 'react'
 import { Router, Route } from 'react-router-dom'
 import history from 'utils/history'
-import { Provider, createStore } from 'utils/store'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from 'redux'
+import reducer from 'stores'
 
 import Landing from 'pages/Landing'
+
+const store = createStore(
+    reducer,
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
+)
 
 const Dashboard = () => (
     <div>Hello from Dashboard</div>
@@ -11,7 +22,7 @@ const Dashboard = () => (
 
 const Index = () => (
     <Router history={history}>
-        <Provider value={createStore()}>
+        <Provider store={store}>
             <Route exact path="/" component={Landing} />
             <Route path="/dashboard" component={Dashboard} />
         </Provider>
