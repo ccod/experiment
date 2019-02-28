@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Menu, Dropdown, Icon, Avatar } from 'antd'
 import './Profile.css'
+import { connect } from 'react-redux'
+import { fetchProfile } from 'stores/profile'
 
 const menu = () => (
     <Menu className="header-menu">
@@ -9,7 +11,7 @@ const menu = () => (
     </Menu>
 )
 
-export default class Profile extends Component {
+class Profile extends Component {
     componentDidMount() {
         this.props.fetchProfile()
     }
@@ -26,3 +28,13 @@ export default class Profile extends Component {
         )
     }
 }
+
+const mapState = state => ({
+    profile: state.profile.value
+})
+
+const mapDispatch = dispatch => ({
+    fetchProfile: fetchProfile(dispatch)
+})
+
+export default connect(mapState, mapDispatch)(Profile)

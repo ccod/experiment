@@ -1,9 +1,11 @@
 import React from 'react'
-import { Layout, Row, Col, Card } from 'antd'
-import { Profile, PlayerList } from 'containers'
+import { Button, Layout, Row, Col, Card } from 'antd'
+import { Link } from 'react-router-dom'
+import { Profile, PlayerList } from 'components'
+import './Layout.css'
 
 const {
-    Header, Footer, Content,
+    Header, Footer, Content, Sider
 } = Layout
 
 const RankList = () => (
@@ -25,11 +27,15 @@ const PlayerRankAdmin = () => (
 
 export default () => (
     <Layout>
-        <Header>
-            <Profile />
-        </Header>
-        <Content>
-            <PlayerRankAdmin />
+        <Row>
+            <Col span={6}><h4>Team Gosu Build</h4></Col>
+            <Col span={14} />
+            <Col><Link to="/dashboard"><Button>Login</Button></Link></Col>
+        </Row>
+        <Content >
+            <div className="content">
+                Content
+            </div>
         </Content>
         <Footer>
             <Row type="flex" justify="center">

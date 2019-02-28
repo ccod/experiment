@@ -7,6 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import reducer from 'stores'
 
 import Landing from 'pages/Landing'
+import Dashboard from 'pages/Dashboard'
 
 const store = createStore(
     reducer,
@@ -16,17 +17,15 @@ const store = createStore(
     )
 )
 
-const Dashboard = () => (
-    <div>Hello from Dashboard</div>
-)
-
 const Index = () => (
-    <Router history={history}>
-        <Provider store={store}>
-            <Route exact path="/" component={Landing} />
-            <Route path="/dashboard" component={Dashboard} />
-        </Provider>
-    </Router>
+    <Provider store={store}>
+        <Router history={history(store)}>
+            <>
+                <Route exact path="/" component={Landing} />
+                <Route path="/dashboard" component={Dashboard} />
+            </>
+        </Router>
+    </Provider>
 )
 
 export default Index

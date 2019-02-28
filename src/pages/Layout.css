@@ -1,0 +1,25 @@
+
+.dashboard--tabs__margin {
+    margin-top: 100px
+}
+
+.content {
+    min-height: 649px
+}
+
+.content > .ant-tabs-left-bar {
+    width: 200px
+}
+
+.header-top-bar {
+    height: 60px;
+}
+
+.header-top-bar > h3 { line-height: 60px }
+.header-top-bar > i {
+    line-height: 60px;
+}
+.header--icon {
+    font-size: x-large;
+}
+.header-top-bar > div { line-height: 60px }

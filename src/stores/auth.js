@@ -29,7 +29,7 @@ const logout = dispatch => () => {
 }
 
 const authed = (b, err) => ({ auth: b, error: err})
-const defaultState = { auth: false, error: null} 
+const defaultState = { auth: false, error: null, isAdmin: false } 
 const reducer = (state = defaultState, action) => {
     switch(action.type) {
         case isAuthenticated.type: return authed(true)

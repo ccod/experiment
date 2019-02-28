@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { List, Avatar } from 'antd'
 import './PlayerList.css'
+import { connect } from 'react-redux'
+import { fetchPlayers } from 'stores/player'
 
 const Item = ({ player }) => (
     <div className="list-player">
@@ -9,7 +11,7 @@ const Item = ({ player }) => (
     </div>
 )
 
-export default class ProfileList extends Component {
+class ProfileList extends Component {
     componentDidMount() {
         this.props.fetchPlayers()
     }
@@ -24,3 +26,13 @@ export default class ProfileList extends Component {
         )
     }
 }
+
+const mapState = state => ({
+    players: state.player.value
+})
+
+const mapDispatch = dispatch => ({
+    fetchPlayers: fetchPlayers(dispatch)
+})
+
+export default connect(mapState, mapDispatch)(ProfileList)
