@@ -1,30 +1,26 @@
 import React from 'react'
-import { Router, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import history from 'utils/history'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { createStore, applyMiddleware, compose } from 'redux'
-import reducer from 'stores'
+import configureStore from 'stores'
+import { PrivateRoute } from 'components'
 
 import Landing from 'pages/Landing'
-import Dashboard from 'pages/Dashboard'
+import App from 'pages/App'
+import Callback from 'pages/Callback'
+import { ConnectedRouter } from 'connected-react-router';
 
-const store = createStore(
-    reducer,
-    compose(
-        applyMiddleware(thunk),
-        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
-    )
-)
+let store = configureStore()
 
 const Index = () => (
     <Provider store={store}>
-        <Router history={history(store)}>
+        <ConnectedRouter history={history}>
             <>
-                <Route exact path="/" component={Landing} />
-                <Route path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/" component={Landing} />
+                <PrivateRoute path="/dashboard" component={App} />
+                <Route path='/callback' component={Callback} />
             </>
-        </Router>
+        </ConnectedRouter>
     </Provider>
 )
 

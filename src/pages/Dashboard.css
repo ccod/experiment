@@ -1,0 +1,20 @@
+.dashboard--item:hover {
+    background-color: #badef2;
+}
+.dashboard--item__width {
+    width: 100%;
+    width: -moz-available;
+    width: -webkit-fill-available;
+}
+
+.dashboard--item__height {
+    height: 64px;
+}
+
+.dashboard--item__height > h2 {
+    line-height: 64px;
+}
+
+.dashboard--item__height > p {
+    line-height: 64px;
+}

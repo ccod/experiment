@@ -1,0 +1,13 @@
+.topbar__background {
+    background-color: #badef2
+}
+
+.topbar__spacing {
+    padding: .5em;
+    margin-bottom: 40px;
+}
+
+.topbar--icon__size {
+    font-size: 1.5em;
+    margin-top: 5px;
+}

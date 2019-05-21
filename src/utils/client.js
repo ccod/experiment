@@ -8,6 +8,7 @@ export default class Client {
         })
     }
     
-    getProfile = () => this.http.get('/player')
-    getPlayers = () => this.http.get('/players')
+
+    getProfile = () => this.http.get('/auth/user')
+    getPlayers = () => this.http.get('/player')
 }

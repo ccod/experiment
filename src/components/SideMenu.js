@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon, Layout, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { pickMenuKey } from 'stores/ui';
 
 const SubMenu = Menu.SubMenu
 
@@ -13,7 +14,7 @@ const SideMenu = props => (
         collapsed={props.collapsed}
     >
         <Menu 
-            style={{'margin-top':'60px'}} 
+            style={{'marginTop':'60px'}} 
             theme="light" 
             mode="inline" 
             defaultOpenKeys={['sub1']}
@@ -66,7 +67,7 @@ const SideMenu = props => (
 
 const mapState = state => ({
     collapsed: state.ui.sideMenu,
-    selectedKey: state.ui.sideMenuKey
+    selectedKey: pickMenuKey(state.router.location.pathname)
 })
 
 export default connect(mapState)(SideMenu)
